@@ -71,6 +71,8 @@ public class dash extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         mainDesktopPane = new javax.swing.JDesktopPane();
         jLabel4 = new javax.swing.JLabel();
@@ -322,6 +324,20 @@ public class dash extends javax.swing.JFrame {
         header.setBackground(new java.awt.Color(255, 102, 0));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("-");
+        header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 30, 30));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel21.setText("x");
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
+        header.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, 50));
+
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Familymart-Malaysia.jpg"))); // NOI18N
         header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 70));
@@ -492,6 +508,12 @@ public class dash extends javax.swing.JFrame {
         report.setBackground(navcolor);
     }//GEN-LAST:event_reportMouseExited
 
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        loginBoard sf = new loginBoard();
+        sf.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_jLabel21MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -551,7 +573,9 @@ public class dash extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;

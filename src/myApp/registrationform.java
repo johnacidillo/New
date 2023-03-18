@@ -111,10 +111,10 @@ public class registrationform extends javax.swing.JFrame {
                 logButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(logButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 90, 30));
+        jPanel2.add(logButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 90, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 320, 390));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 320, 430));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +132,7 @@ public class registrationform extends javax.swing.JFrame {
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ty.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 610));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 600));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 520, 610);

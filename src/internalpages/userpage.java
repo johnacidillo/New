@@ -15,9 +15,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import myApp.productForm;
 import net.proteanit.sql.DbUtils;
 
@@ -38,6 +40,13 @@ public class userpage extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);
        
     }
+    public void reset(){
+                cos_id.setText("");
+                cos_name.setText("");
+                cos_status.setText("");
+                cos_address.setText("");
+    }
+    
        public void displayData(){
           try{
            dbconnector dbc = new dbconnector();
@@ -56,7 +65,7 @@ public class userpage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        custmeraddress = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -69,21 +78,23 @@ public class userpage extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_costumer = new javax.swing.JTable();
-        costumId = new javax.swing.JTextField();
-        costumername = new javax.swing.JTextField();
-        costumeraddress = new javax.swing.JTextField();
-        costumerstatus = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        cos_id = new javax.swing.JTextField();
+        cos_name = new javax.swing.JTextField();
+        cos_status = new javax.swing.JTextField();
+        Save = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
+        Display = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        Clear = new javax.swing.JButton();
+        cos_address = new javax.swing.JTextField();
+        Update = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(560, 640));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(570, 400));
-        jPanel1.setLayout(null);
+        custmeraddress.setBackground(new java.awt.Color(0, 153, 255));
+        custmeraddress.setPreferredSize(new java.awt.Dimension(570, 640));
+        custmeraddress.setLayout(null);
 
         jPanel5.setBackground(new java.awt.Color(51, 255, 255));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +108,8 @@ public class userpage extends javax.swing.JInternalFrame {
 
         jLabel3.setBackground(new java.awt.Color(51, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("DELETE");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ADD");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -118,8 +130,8 @@ public class userpage extends javax.swing.JInternalFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5);
-        jPanel5.setBounds(170, 150, 60, 30);
+        custmeraddress.add(jPanel5);
+        jPanel5.setBounds(10, 150, 60, 30);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -128,8 +140,8 @@ public class userpage extends javax.swing.JInternalFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(250, 150, 190, 30);
+        custmeraddress.add(jTextField1);
+        jTextField1.setBounds(260, 150, 190, 30);
 
         jPanel6.setBackground(new java.awt.Color(51, 255, 255));
 
@@ -143,17 +155,17 @@ public class userpage extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel6);
-        jPanel6.setBounds(450, 150, 80, 30);
+        custmeraddress.add(jPanel6);
+        jPanel6.setBounds(460, 150, 90, 30);
 
-        jPanel2.setBackground(new java.awt.Color(0, 255, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/15.png"))); // NOI18N
@@ -162,14 +174,16 @@ public class userpage extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2);
+        custmeraddress.add(jPanel2);
         jPanel2.setBounds(0, 0, 550, 110);
 
         jPanel7.setBackground(new java.awt.Color(51, 255, 255));
@@ -191,50 +205,64 @@ public class userpage extends javax.swing.JInternalFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel7);
+        custmeraddress.add(jPanel7);
         jPanel7.setBounds(90, 150, 60, 30);
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("PRODUCTS");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 110, 190, 40);
+        custmeraddress.add(jLabel1);
+        jLabel1.setBounds(10, 110, 200, 40);
 
+        table_costumer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_costumerMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(table_costumer);
 
-        jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(150, 250, 390, 350);
-        jPanel1.add(costumId);
-        costumId.setBounds(10, 280, 130, 40);
-        jPanel1.add(costumername);
-        costumername.setBounds(10, 330, 130, 40);
-        jPanel1.add(costumeraddress);
-        costumeraddress.setBounds(10, 380, 130, 40);
-        jPanel1.add(costumerstatus);
-        costumerstatus.setBounds(10, 430, 130, 40);
+        custmeraddress.add(jScrollPane3);
+        jScrollPane3.setBounds(130, 230, 440, 410);
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cos_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cos_idActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(50, 480, 57, 23);
+        custmeraddress.add(cos_id);
+        cos_id.setBounds(0, 280, 130, 30);
+        custmeraddress.add(cos_name);
+        cos_name.setBounds(0, 330, 130, 30);
+        custmeraddress.add(cos_status);
+        cos_status.setBounds(0, 430, 130, 30);
 
-        jButton2.setText("Delete");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(423, 220, 90, 23);
-
-        jButton3.setText("Display");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                SaveActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(160, 220, 90, 23);
+        custmeraddress.add(Save);
+        Save.setBounds(20, 470, 90, 30);
+
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+        custmeraddress.add(Delete);
+        Delete.setBounds(460, 200, 90, 23);
+
+        Display.setText("Display");
+        Display.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisplayActionPerformed(evt);
+            }
+        });
+        custmeraddress.add(Display);
+        Display.setBounds(130, 200, 90, 23);
 
         jPanel8.setBackground(new java.awt.Color(51, 255, 255));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,7 +276,7 @@ public class userpage extends javax.swing.JInternalFrame {
 
         jLabel4.setBackground(new java.awt.Color(51, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("  ADD");
+        jLabel4.setText("DELETE");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -269,18 +297,38 @@ public class userpage extends javax.swing.JInternalFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel8);
-        jPanel8.setBounds(10, 150, 60, 30);
+        custmeraddress.add(jPanel8);
+        jPanel8.setBounds(170, 150, 60, 30);
+
+        Clear.setText("Clear");
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
+        custmeraddress.add(Clear);
+        Clear.setBounds(20, 510, 90, 30);
+        custmeraddress.add(cos_address);
+        cos_address.setBounds(-1, 380, 130, 30);
+
+        Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
+        custmeraddress.add(Update);
+        Update.setBounds(20, 553, 90, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+            .addComponent(custmeraddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addComponent(custmeraddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -313,9 +361,9 @@ public class userpage extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseEntered
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void DisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayActionPerformed
        displayData();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_DisplayActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
@@ -329,30 +377,93 @@ public class userpage extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel8MouseEntered
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
       dbconnector dbc = new dbconnector();
 
-        dbc.insertData("INSERT INTO tbl_costumer (costumer_name, costumer_address, costumer_status) VALUES ('"+costumername.getText()+"', '"+costumeraddress.getText()+"','"+costumerstatus.getText()+"')");
+        dbc.insertData("INSERT INTO tbl_costumer (cos_name, cos_address, cos_status) VALUES ('"+cos_name.getText()+"', '"+cos_status.getText()+"','"+cos_address.getText()+"')");
 
         displayData();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+     int rowIndex = table_costumer.getSelectedRow();
+       
+       
+       if(rowIndex < 0){
+           JOptionPane.showMessageDialog(null, "Please select a data first");
+       }else{
+            TableModel model = table_costumer.getModel();
+            Object value = model.getValueAt(rowIndex, 0);
+            String id = value.toString();
+             int a=JOptionPane.showConfirmDialog(null,"Are you sure?");  
+                    if(a==JOptionPane.YES_OPTION){  
+                            dbconnector dbc = new dbconnector();
+                            dbc.deleteData(Integer.parseInt(id));
+                            displayData();
+                     
+                    }    
+       
+       }
+       
+       
+    }//GEN-LAST:event_DeleteActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+       reset();
+    }//GEN-LAST:event_ClearActionPerformed
+
+    private void table_costumerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_costumerMouseClicked
+       int rowIndex = table_costumer.getSelectedRow();
+       if(rowIndex < 0){
+           
+       }else{
+           TableModel model = table_costumer.getModel();
+           cos_id.setText(""+model.getValueAt(rowIndex,0));
+           cos_name.setText(""+model.getValueAt(rowIndex,1));
+           cos_address.setText(""+model.getValueAt(rowIndex,2));
+           cos_status.setText(""+model.getValueAt(rowIndex,3));
+           
+       }
+    }//GEN-LAST:event_table_costumerMouseClicked
+
+    private void cos_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cos_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cos_idActionPerformed
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+       dbconnector dbc = new dbconnector();
+        int num = dbc.updateData("UPDATE tbl_costumer "
+                + "SET cos_name = '"+cos_name.getText()+"', cos_address='"+cos_address.getText()+"', "
+                        + "cos_status ='"+cos_status.getText()+"'" 
+                                + "WHERE cos_id = '"+cos_id.getText()+"'");
+       
+        if(num == 0){
+           
+        }else{
+           JOptionPane.showMessageDialog(null, "Updated Successfully!");
+           displayData();
+           reset();
+        }
+    }//GEN-LAST:event_UpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField costumId;
-    private javax.swing.JTextField costumeraddress;
-    private javax.swing.JTextField costumername;
-    private javax.swing.JTextField costumerstatus;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Clear;
+    private javax.swing.JButton Delete;
+    private javax.swing.JButton Display;
+    private javax.swing.JButton Save;
+    private javax.swing.JButton Update;
+    private javax.swing.JTextField cos_address;
+    private javax.swing.JTextField cos_id;
+    private javax.swing.JTextField cos_name;
+    private javax.swing.JTextField cos_status;
+    private javax.swing.JPanel custmeraddress;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
